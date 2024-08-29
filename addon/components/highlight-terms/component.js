@@ -1,9 +1,11 @@
+import $ from 'jquery';
 import { run } from '@ember/runloop';
 import Component from '@ember/component';
 import layout from './template';
 
 const HighlightTerm = Component.extend({
   layout,
+  tagName: 'span',
   classNames: ['highlight-terms'],
 
   didReceiveAttrs() {
@@ -38,23 +40,23 @@ const HighlightTerm = Component.extend({
         }, []);
       }
 
-      if (this.$()) {
-        this.$().highlight(term, options);
+      if ($(this.element).length) {
+        $(this.element).highlight(term, options);
       }
     }
   },
 
   unhighlight() {
-    let $el = this.$();
-    
+    let $el = $(this.element);
+
     if ($el && typeof $el.unhighlight === 'function') {
-      this.$().unhighlight();
+      $(this.element).unhighlight();
     }
-  }
+  },
 });
 
 HighlightTerm.reopenClass({
-  positionalParams: 'term'
+  positionalParams: 'term',
 });
 
 export default HighlightTerm;
