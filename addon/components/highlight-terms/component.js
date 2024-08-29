@@ -1,4 +1,4 @@
-import $ from 'jquery';
+import jQuery from 'jquery';
 import { run } from '@ember/runloop';
 import Component from '@ember/component';
 import layout from './template';
@@ -40,17 +40,17 @@ const HighlightTerm = Component.extend({
         }, []);
       }
 
-      if ($(this.element).length) {
-        $(this.element).highlight(term, options);
+      if (jQuery(this.element).length) {
+        jQuery(this.element).highlight(term, options);
       }
     }
   },
 
   unhighlight() {
-    let $el = $(this.element);
+    let $el = jQuery(this.element);
 
     if ($el && typeof $el.unhighlight === 'function') {
-      $(this.element).unhighlight();
+      jQuery(this.element).unhighlight();
     }
   },
 });
